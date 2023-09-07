@@ -46,14 +46,24 @@ WHERE countrycode ILIKE 'smr' AND name != 'San Marino';
 --ANSWER 4: Fly to a city named Serravalle in Country of SMR (san marino)!
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
+SELECT * FROM city
+WHERE name LIKE '%Serra%';
 
+SELECT * FROM country
+WHERE code ILIKE 'bra';
 
-
+SELECT * FROM city
+WHERE name LIKE '%Serra%' AND countrycode ILIKE 'bra';
+--ANSWER 5: New City Name: SERRA, Country: Brazil (BRA), which is in South America
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll follow right behind you!
+SELECT name, capital FROM country
+WHERE code ILIKE 'bra';
 
+SELECT * FROM city
+WHERE id = 211
 
-
+--ANSWER 6: Output ==> Bras�lia (typo in the entries, meant to say BRASILIA, should be updated)
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the landing dock.
 
@@ -68,8 +78,8 @@ WHERE countrycode ILIKE 'smr' AND name != 'San Marino';
 
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
+SELECT * FROM city
+WHERE population = 91084
+--ANSWER 7: Santa Monica
 
-
-
-
--- She's in ____________________________!
+-- She's in Santa Monica, California USA!
